@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deployment</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/auth.css') }}"
+    />
+  </head>
+  <body>
+    <div id="auth">
+      <div class="row h-100">
+        <div class="col-lg-7 col-12">
+          <div id="auth-left">
+            <div class="auth-logo">
+              <h1 class="auth-title">Teks Classifier</h1>
+            </div>
+            <h1>Let's Analyze</h1>
+            <p class="auth-subtitle mb-5">
+              Masukkan Kalimat Yang Ingin Anda Klasifikasi
+            </p>
+
+            <form id="input" method="post" action="predict">
+              <div class="position-relative mb-4">
+                <input
+                  type="text"
+                  name="text"
+                  class="form-control form-control-lg"
+                  placeholder="text here . ."
+                />
+              </div>
+              <button
+                type="submit"
+                value="Submit"
+                class="btn btn-primary btn-block shadow-lg"
+              >
+                Test!
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block">
+          <div id="auth-right">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-header"><h5>Kategori Sentimen</h5></div>
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <p
+                        class="auth-title text-center fs-2 fw-bold pt-2 text-success"
+                      >
+                        {{ variable }}
+                      </p>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-header"><h5>Probabilitas</h5></div>
+                  <div class="card-body">
+                    <h5 class="card-title">Positif : {{ pos }}</h5>
+                    <h5 class="card-title">Negatif : {{ neg }}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div>{{ emot }}</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
